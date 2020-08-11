@@ -1,3 +1,8 @@
+# Private fork to support Azure Gov
+There are 2 issues in the main repo as of 8/11/2020 for AzureGov Storage Accounts: minTLS + AllowPublicBlob. This build gets around it. Please see https://github.com/daweins/terraformGovStorageRepro for a repro, including the private build
+
+
+
 # Terraform Provider for Azure (Resource Manager)
 
 Version 2.0 of the AzureRM Provider requires Terraform 0.12.x and later.
