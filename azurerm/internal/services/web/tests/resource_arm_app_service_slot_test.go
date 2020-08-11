@@ -1258,33 +1258,6 @@ func TestAccAzureRMAppServiceSlot_enableManageServiceIdentity(t *testing.T) {
 	})
 }
 
-func TestAccAzureRMAppServiceSlot_minTls(t *testing.T) {
-	data := acceptance.BuildTestData(t, "azurerm_app_service_slot", "test")
-
-	resource.ParallelTest(t, resource.TestCase{
-		PreCheck:     func() { acceptance.PreCheck(t) },
-		Providers:    acceptance.SupportedProviders,
-		CheckDestroy: testCheckAzureRMAppServiceSlotDestroy,
-		Steps: []resource.TestStep{
-			{
-				Config: testAccAzureRMAppServiceSlot_minTls(data, "1.0"),
-				Check: resource.ComposeTestCheckFunc(
-					testCheckAzureRMAppServiceSlotExists(data.ResourceName),
-					resource.TestCheckResourceAttr(data.ResourceName, "site_config.0.min_tls_version", "1.0"),
-				),
-			},
-			{
-				Config: testAccAzureRMAppServiceSlot_minTls(data, "1.1"),
-				Check: resource.ComposeTestCheckFunc(
-					testCheckAzureRMAppServiceExists(data.ResourceName),
-					resource.TestCheckResourceAttr(data.ResourceName, "site_config.0.min_tls_version", "1.1"),
-				),
-			},
-			data.ImportStep(),
-		},
-	})
-}
-
 func TestAccAzureRMAppServiceSlot_applicationBlobStorageLogs(t *testing.T) {
 	data := acceptance.BuildTestData(t, "azurerm_app_service_slot", "test")
 

@@ -221,24 +221,6 @@ func TestAccDataSourceAzureRMAppService_http2Enabled(t *testing.T) {
 	})
 }
 
-func TestAccDataSourceAzureRMAppService_minTls(t *testing.T) {
-	data := acceptance.BuildTestData(t, "data.azurerm_app_service", "test")
-
-	resource.ParallelTest(t, resource.TestCase{
-		PreCheck:     func() { acceptance.PreCheck(t) },
-		Providers:    acceptance.SupportedProviders,
-		CheckDestroy: testCheckAzureRMAppServiceDestroy,
-		Steps: []resource.TestStep{
-			{
-				Config: testAccDataSourceAppService_minTls(data),
-				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttr(data.ResourceName, "site_config.0.min_tls_version", "1.1"),
-				),
-			},
-		},
-	})
-}
-
 func TestAccDataSourceAzureRMAppService_basicWindowsContainer(t *testing.T) {
 	data := acceptance.BuildTestData(t, "data.azurerm_app_service", "test")
 
